@@ -9,6 +9,24 @@ const App = () => {
     setReslut(result.concat( e.target.name));
 
   }
+  const clear =()=> { 
+    setReslut(""); 
+  }
+  const backspace =()=> { 
+    setReslut(result.slice(0,-1)); 
+  }
+  const calculate = () => {
+    try {
+      setReslut(eval(result).toString())
+    }
+    catch {
+      setReslut("ERROR")
+    }
+
+
+
+  }
+
   return (
     <>
     {/* cla body  */}
@@ -18,8 +36,8 @@ const App = () => {
     <input type="text" value={result} /> 
   </form>
     <div className="keyboard" >
-    <button onClick={handleClick}>Clear</button>
-    <button onClick={handleClick}>C</button>
+    <button onClick={clear} id="clear">Clear</button>
+    <button onClick={backspace} id="backspace">C</button>
     <button name="/" onClick={handleClick}>&divide;</button>
     <button name="7" onClick={handleClick}>7</button>
     <button name="8" onClick={handleClick}>8</button>
@@ -35,7 +53,7 @@ const App = () => {
     <button name="+" onClick={handleClick}>+</button>
     <button name="0" onClick={handleClick}>0</button>
     <button name="." onClick={handleClick}>.</button>
-    <button onClick={handleClick}>=</button>
+    <button onClick={calculate} id="result" >=</button>
     </div>
   </div>
     </>
