@@ -3,27 +3,32 @@ import './App.css';
 
 const App = () => {
 
-  // setting up the values for the calculator
+  // setting up the values for the calculator parameters.
   const [result, setReslut]= useState("");
   const handleClick =(e)=> {
     setReslut(result.concat( e.target.name));
-
   }
+
+  // function for clearing the calculater
   const clear =()=> { 
     setReslut(""); 
   }
+
+  // function for backspace 
   const backspace =()=> { 
     setReslut(result.slice(0,-1)); 
   }
+
+
   const calculate = () => {
     try {
+      // using eval to evaluate the string and return the result
       setReslut(eval(result).toString())
     }
-    catch {
+    catch { 
+      // error handler for the expression
       setReslut("ERROR")
     }
-
-
 
   }
 
